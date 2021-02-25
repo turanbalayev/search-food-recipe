@@ -6,7 +6,6 @@ import './App.css';
 function App() {
   const APP_ID = "f9066140";
   const APP_KEY = "5455a314b443fba9d95d4b92575d88cd";
-  // const example_req = `https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_KEY}`;
 
   const [recepies, setRecepies] = useState([])
   const [searchInput, setSearchInput] = useState("");
@@ -40,14 +39,21 @@ function App() {
         <input type="text" className="search-bar" value={searchInput} onChange={updateSearchInput} />
         <button type="submit" className="search-button">Search</button>
       </form>
-      {recepies.map(recipe => (
-        <Recipe
-          key={recipe.recipe.label}
-          title={recipe.recipe.label}
-          image={recipe.recipe.image}
-          calories={recipe.recipe.calories}
-        />
-      ))}
+
+      <div className="recipe-wrapper">
+
+        {recepies.map(recipe => (
+          <Recipe
+            key={recipe.recipe.label}
+            title={recipe.recipe.label}
+            image={recipe.recipe.image}
+            calories={recipe.recipe.calories}
+            ingredients={recipe.recipe.ingredients}
+          />
+        ))}
+
+      </div>
+
     </div>
   );
 }
